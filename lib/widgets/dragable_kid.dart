@@ -25,7 +25,7 @@ class _DragableKidState extends State<DragableKid>
   void initState() {
     this.position = widget.position;
     rotationController = AnimationController(
-        duration: const Duration(milliseconds: 3000), vsync: this);
+        duration: const Duration(milliseconds: 1000), vsync: this);
     super.initState();
   }
 
@@ -63,7 +63,7 @@ class _DragableKidState extends State<DragableKid>
       child: RotationTransition(
         turns: Tween(begin: 0.0, end: 1.0).animate(rotationController),
         child: AnimatedContainer(
-          duration: Duration(seconds: 1),
+          duration: Duration(milliseconds: 500),
           height: size,
           width: size,
           decoration: BoxDecoration(

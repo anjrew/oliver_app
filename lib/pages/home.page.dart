@@ -98,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
         _counter > 40 ? "OK stop it oliver!" : "You Win",
         style: Theme.of(context).textTheme.display2,
       ),
-      duration: Duration(seconds: 2),
+      duration: Duration(seconds: 1),
     );
   }
 
