@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:oliver/models/dragable.model.dart';
 import 'package:oliver/pages/race.page.dart';
+import 'package:oliver/values/image_paths.dart';
 import 'package:oliver/widgets/color_target.widget.dart';
 import 'package:oliver/widgets/dragable_kid.dart';
 
@@ -19,9 +20,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int _counter = 0;
   String targetString = "Gimme";
-
-  Offset oliverPosition = Offset(100, 100);
-  Offset freddiePosition = Offset(100, 100);
 
   void _incrementCounter() {
     setState(() {
@@ -59,8 +57,8 @@ class _MyHomePageState extends State<MyHomePage> {
           buildPositionedDragable(top: 500, left:200, choice: ColorChoice(Colors.purple, "Purple like the Ribena!")),
           buildPositionedDragable(top: 300, left: 50, choice: ColorChoice(Colors.orange, "Orange like carrots!")),
 
-          DragableKid(image: 'assets/images/Oliver.png', x: 10, y: 10),
-          DragableKid(image: 'assets/images/Freddie.png', x: 100, y: 200),
+          DragableKid(image: oliverImage, x: 10, y: 10),
+          DragableKid(image: freddieImage, x: 100, y: 200),
         ],
       ),
 
@@ -84,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
         childWhenDragging: Container(),
         onDraggableCanceled: (v, o) =>
             _scaffoldKey.currentState.showSnackBar(SnackBar(
-          content: Text("MOre more"),
+          content: Text("Try again!"),
         )),
       ),
     );
@@ -137,6 +135,5 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _reset() => setState(() { 
     this._counter = 0; 
-    
     });
 }

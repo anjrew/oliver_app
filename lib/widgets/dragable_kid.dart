@@ -69,11 +69,10 @@ class _DragableKidState extends State<DragableKid>
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(size / 2),
           ),
-          child: ClipOval(
-              // borderRadius: BorderRadius.circular(size / 2),
-              child: Hero(
-                key: Key(imagePath),
-                tag: imagePath,
+          child: Hero(
+              key: Key(imagePath),
+              tag: imagePath,
+              child: ClipOval(
                 child: Image.asset(
                   imagePath,
                   fit: BoxFit.cover,

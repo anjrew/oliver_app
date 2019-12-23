@@ -102,13 +102,15 @@ class _RacePageState extends State<RacePage> {
         name: 'Oliver',
         move: () => moveKid(oliver),
         imagePath: image.oliverImage,
-        position: 20);
+        position: 20,
+        vehicle: Icons.directions_car);
     freddie = new KidData(
         side: HandSide.right,
         name: 'Freddie',
         move: () => moveKid(freddie),
         imagePath: image.freddieImage,
-        position: 20);
+        position: 20,
+        vehicle: Icons.directions_bus);
   }
 
   Future<void> moveKid(KidData kid) async {
@@ -171,21 +173,33 @@ Widget buildTrack(KidData kidData) {
         top: kidData.position,
         child: AnimatedContainer(
           duration: Duration(seconds: 1),
-          height: kidData.size,
+          height: kidData.size + 27,
           width: kidData.size,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(kidData.size / 2),
           ),
-          child: ClipOval(
-              // borderRadius: BorderRadius.circular(kidData.size / 2),
-              child: Hero(
+          child: Stack(
+            alignment: AlignmentDirectional.center,
+            children: <Widget>[
+              Hero(
                 key: Key(kidData.imagePath),
                 tag: kidData.imagePath,
-                child: Image.asset(
-                  kidData.imagePath,
-                  fit: BoxFit.cover,
+                child: ClipOval(
+                  child: Image.asset(
+                    kidData.imagePath,
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              )),
+              ),
+              Transform.translate(
+                offset: Offset(-50, -20),
+                child: Icon(
+                  kidData.vehicle,
+                  size: 150,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     ],
